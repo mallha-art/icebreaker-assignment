@@ -1,0 +1,55 @@
+// Hassan Mallah
+
+// NumberGuessingGame for CSC 211
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class NumberGuessingGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        
+        int targetNumber = random.nextInt(10) + 1;
+        
+        int maxGuesses = 5;
+        int tries = 0;
+        boolean guessedCorrectly = false;
+        
+        System.out.println("Hi! Welcome to the Number Guessing Game!");
+        System.out.println("Pick a number between 1 and 10.");
+        System.out.println("You have " + maxGuesses + " attempts to guess it.");
+        
+        while (tries < maxGuesses) {
+            System.out.print("Enter an integer: ");
+            int userGuess;
+            
+            if (scanner.hasNextInt()) {
+                userGuess = scanner.nextInt();
+            } else {
+                System.out.println("Invalid. Please enter an integer.");
+                scanner.next();
+                continue;
+            }
+            
+            tries++;
+            
+            if (userGuess == targetNumber) {
+                System.out.println("You got it! Thank you for playing!");
+                guessedCorrectly = true;
+                break;
+            } else if (userGuess > targetNumber) {
+                System.out.println("Too high! Try again!");
+            } else {
+                System.out.println("Too low! Try again!");
+            }
+        }
+        
+        if (!guessedCorrectly) {
+            System.out.println("Sorry. You have reached your limit. The correct number is " + targetNumber + ".");
+            System.out.println("Thank you for playing!");
+        }
+        
+        scanner.close();
+    }
+}
