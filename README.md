@@ -1,2 +1,2 @@
-# icebreaker-assignment
-Icebreaker Assignment for CSC 211
+# CSC 211
+CSC 211 Assignments
