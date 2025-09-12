@@ -1,0 +1,74 @@
+// Hassan Mallah 
+
+// Module 2 Assignment for CSC 211
+
+public class Bank {
+    private double balance;
+    private double[] transactions;
+    private int transactionCount;
+    private static final int maxTransactions = 100;
+    
+    public Bank() {
+        this.balance = 0.0;
+        this.transactions = new double[maxTransactions];
+        this.transactionCount = 0;
+    }
+    
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            addTransaction(amount);
+        } else {
+            System.out.println("Deposit Amount Must Be Positive.");
+        }
+    }
+    
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            addTransaction(-amount);
+        } else if (amount > balance) {
+            System.out.println("Insufficient Funds.");
+        } else {
+            System.out.println("Withdrawal Amount Must Be Negative.");
+        }
+    }
+    
+    private void addTransaction(double amount) {
+        if (transactionCount < maxTransactions) {
+            transactions[transactionCount] = amount;
+            transactionCount++;
+        } else {
+            System.out.println("Transaction Limit Reached.");
+        }
+    }
+    
+    public void listInteractions() {
+        System.out.println("Transactions: ");
+        for (int i = 0; i < transactionCount; i++) {
+            double amount = transactions[i];
+            if (amount > 0) {
+                System.out.println("Deposit: " + amount);
+            } else {
+                System.out.println("Withdrawal: " + (-amount));
+            }
+        }
+    }
+    
+    public double getBalance() {
+        return balance;
+        
+    }
+    
+    public static void main(String[] args) {
+        Bank myBank = new Bank();
+        
+        myBank.deposit(1000);
+        myBank.withdraw(100);
+        myBank.deposit(200);
+        myBank.deposit(100);
+        myBank.listInteractions();
+        
+        System.out.println("Current Balance: " + myBank.getBalance());
+    }
+}
