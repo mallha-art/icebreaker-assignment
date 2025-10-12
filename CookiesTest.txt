@@ -1,0 +1,20 @@
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CookiesTest {
+
+    @Test
+    public void testBaked() {
+        Cookies cookies = new Cookies(15, 2);
+        cookies.baked(10);
+        assertEquals(5, cookies.getNumbers());
+    }
+
+    @Test
+    public void testGive() {
+        Cookies cookies = new Cookies(8, 0);
+        cookies.give(3);
+        assertEquals(11, cookies.getNumbers());
+    }
+}
