@@ -1,0 +1,31 @@
+public class Cookies {
+    private double numbers;
+    private double minNumbers;
+
+    public Cookies(double numbers, double minNumbers) {
+        this.numbers = numbers;
+        this.minNumbers = minNumbers;
+    }
+
+    public double getNumbers() {
+        return numbers;
+    }
+
+    public double getMinNumbers() {
+        return minNumbers;
+    }
+
+    public double baked(double amount) {
+        if(numbers - amount >= minNumbers) {
+            numbers -= amount;
+            return amount;
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
+    public double give(double amount) {
+        this.numbers += amount;
+        return amount;
+    }
+}
