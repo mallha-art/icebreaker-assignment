@@ -1,0 +1,31 @@
+public class Candies {
+    private double quantity;
+    private double minimumQuantity;
+
+    public Candies(double quantity, double minimumQuantity) {
+        this.quantity = quantity;
+        this.minimumQuantity = minimumQuantity;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public double getMinimumQuantity() {
+        return minimumQuantity;
+    }
+
+    public double collect(double amount) {
+        if(quantity - amount > minimumQuantity) {
+            quantity -= amount;
+            return amount;
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
+    public double give(double amount) {
+        this.quantity += amount;
+        return amount;
+    }
+}
