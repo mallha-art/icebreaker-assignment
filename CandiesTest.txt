@@ -1,0 +1,20 @@
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CandiesTest {
+
+    @Test
+    public void testCollect() {
+        Candies candies = new Candies(50, -10);
+        candies.collect(30);
+        assertEquals(20, candies.getQuantity());
+    }
+
+    @Test
+    public void testGive() {
+        Candies candies = new Candies(40, 0);
+        candies.give(50);
+        assertEquals(90, candies.getQuantity());
+    }
+}
