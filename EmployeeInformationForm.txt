@@ -1,0 +1,54 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class EmployeeInformationForm {
+    public static void main(String[] args) {
+        Frame frame = new Frame("Employee Information Form");
+
+        Label nameLabel = new Label("Name:");
+        Label IDLabel = new Label("Employment ID:");
+        Label departmentLabel = new Label("Department:");
+        Label displayLabel = new Label(" ");
+
+        nameLabel.setBounds(40, 50, 50, 20);
+        IDLabel.setBounds(40, 80, 50, 20);
+        departmentLabel.setBounds(40, 110, 50, 20);
+        displayLabel.setBounds(40, 210, 300, 20);
+
+        TextField nameField = new TextField();
+        TextField IDField = new TextField();
+        TextField departmentField = new TextField();
+
+        nameField.setBounds(100, 50, 200, 20);
+        IDField.setBounds(100, 80, 200, 20);
+        departmentField.setBounds(100, 110, 200, 20);
+
+        Button submitButton = new Button("Submit");
+        submitButton.setBounds(160, 150, 80, 30);
+
+        frame.add(nameLabel);
+        frame.add(IDLabel);
+        frame.add(departmentLabel);
+        frame.add(displayLabel);
+        frame.add(nameField);
+        frame.add(IDField);
+        frame.add(departmentField);
+        frame.add(submitButton);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String ID = IDField.getText();
+                String department = departmentField.getText();
+
+                displayLabel.setText("Name: " + name);
+                displayLabel.setText("ID: " + ID);
+                displayLabel.setText("Department: " + department);
+            }
+        });
+
+        frame.setSize(400, 300);
+        frame.setLayout(null);
+        frame.setVisible(true);
+    }
+}
