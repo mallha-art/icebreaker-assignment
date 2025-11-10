@@ -1,0 +1,121 @@
+// The class Vehicle has instance variables brand, model, and year.
+class Vehicle {
+    private String brand;
+    private String model;
+    private int year;
+
+// The constructor Vehicle has parameters brand, model, and year.
+    public Vehicle(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
+
+// The return brand, model, and year access the Vehicle's traits.
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+// Method startEngine states how the engine starts.
+    public void startEngine() {
+        System.out.println("Its engine starts with a push button.");
+    }
+}
+
+// The class Driver has instance variables name and vehicle.
+class Driver {
+    private String name;
+    private Vehicle vehicle;
+
+// The constructor Driver has parameters name and vehicle.
+    public Driver(String name, Vehicle vehicle) {
+        this.name = name;
+        this.vehicle = vehicle;
+    }
+
+// The method drive states the person driving the vehicle.
+    public void drive() {
+        System.out.println(name + " drives a " + vehicle.getYear() + " " + vehicle.getBrand() + " " + vehicle.getModel());
+        vehicle.startEngine();
+    }
+}
+
+// The class Vehicle2 has instance variables brand2, model2, and year2 as it's a second vehicle.
+class Vehicle2 {
+    private String brand2;
+    private String model2;
+    private int year2;
+
+// The constructor Vehicle2 has parameters brand2, model2, and year2.
+    public Vehicle2(String brand2, String model2, int year2) {
+        this.brand2 = brand2;
+        this.model2 = model2;
+        this.year2 = year2;
+    }
+
+// The return brand2, model2, and year2 accesses the traits of Vehicle2.
+    public String getBrand2() {
+        return brand2;
+    }
+
+    public String getModel2() {
+        return model2;
+    }
+
+    public int getYear2() {
+        return year2;
+    }
+
+    public void startEngine2() {
+        System.out.println("Its engine starts with a push button.");
+    }
+}
+
+// The class Driver2 has instance variables name2 and vehicle2 as there's another person driving the second vehicle.
+class Driver2 {
+    private String name2;
+    private Vehicle vehicle2;
+
+// The constructor Driver2 has parameters name2 and vehicle2.
+    public Driver2(String name2, Vehicle vehicle2) {
+        this.name2 = name2;
+        this.vehicle2 = vehicle2;
+    }
+
+// The method drive2 states the person driving the second vehicle,
+    public void drive2() {
+        System.out.println(name2 + " drives a " + vehicle2.getYear() + " " + vehicle2.getBrand() + " " + vehicle2.getModel());
+        vehicle2.startEngine();
+    }
+}
+
+// The class Main has two vehicles and two persons.
+
+// The first vehicle's brand is Mercedes-Benz, the model is EQB 350, and the year is 2023.
+// The vehicle's engine starts with a push button.
+// Megan owns this vehicle.
+
+// The second vehicle's brand is Toyota, the model is b7, and the year is 2026.
+// The second vehicle's engine also starts with a push button.
+// Madison owns the second vehicle.
+class Main {
+    public static void main(String[] args) {
+        Vehicle vehicle = new Vehicle("Mercedes-Benz", "EQB 350", 2023);
+        Driver Megan = new Driver("Megan", vehicle);
+        Megan.drive();
+        System.out.println();
+
+        Vehicle vehicle2 = new Vehicle("Toyota", "b7", 2026);
+        Driver2 Madison = new Driver2("Madison", vehicle2);
+        Madison.drive2();
+        System.out.println();
+    }
+}
