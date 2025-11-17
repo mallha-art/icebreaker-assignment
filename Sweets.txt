@@ -1,0 +1,17 @@
+interface Sweets {
+    void bake();
+}
+
+class Food implements Sweets {
+    @Override
+    public void bake() {
+        System.out.println("Chocolate Chip Cookies");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Food food = new Food();
+        food.bake();
+    }
+}
