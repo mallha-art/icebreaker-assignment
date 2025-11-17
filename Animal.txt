@@ -1,0 +1,22 @@
+abstract class Animal {
+    void status() {
+        System.out.println("Eating");
+    }
+
+    abstract void meal();
+}
+
+class Lion extends Animal {
+    @Override
+    void meal() {
+        System.out.println("Meat");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Lion lion = new Lion();
+        lion.status();
+        lion.meal();
+    }
+}
