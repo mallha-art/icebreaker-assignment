@@ -1,0 +1,172 @@
+import java.util.*;
+import java.util.stream.*;
+
+abstract class Product {
+    protected String productName;
+    protected double price;
+
+    // Constructor Product with parameters String productName for the name of the product.
+    // And double price for the price of the product.
+    public Product(String productName, double price) {
+        this.productName = productName;
+        this.price = price;
+    }
+
+    // Returns the name of the product.
+    public String getName() {
+        return productName;
+    }
+
+    // Returns the price of the product.
+    public double getPrice() {
+        return price;
+    }
+
+    // Abstract String Category for a specific category that each product belongs to.
+    public abstract String Category();
+
+    @Override
+
+    // Returns the description of a product based on its name, price, and what category it belongs to.
+    public String toString() {
+        return "\nProduct: " + productName +
+                "\n Price: " + price +
+                "\n Category: " + Category();
+    }
+}
+
+// Class Electronics inherits from abstract class Product.
+// This is for a product name with its price that belongs to the Electronics category.
+class Electronics extends Product {
+    public  Electronics(String productName, double price) {
+        super(productName, price);
+    }
+
+    @Override
+    public String Category() {
+        return "Electronics";
+    }
+}
+
+// Class Clothing inherits from abstract class Product.
+// This is for a product name with its price that belongs to the Clothing category.
+class Clothing extends Product {
+    public Clothing(String productName, double price) {
+        super(productName, price);
+    }
+
+    @Override
+    public String Category() {
+        return "Clothing";
+    }
+}
+
+// Class Grocery inherits from abstract class Product.
+// This prints out a product name with its price that belongs to the Grocery category.
+class Grocery extends Product {
+    public Grocery(String productName, double price) {
+        super(productName, price);
+    }
+
+    @Override
+    public String Category() {
+        return "Grocery";
+    }
+}
+
+abstract class User {
+    protected String username;
+
+    // This is a user with a username.
+    public  User(String username){
+        this.username = username;
+    }
+
+    // This returns the user's name.
+    public String getUsername() {
+        return username;
+    }
+}
+
+// Class Customer inherits from abstract class User.
+class Customer extends User {
+    public Customer(String username) {
+        super(username);
+    }
+}
+
+// Class Admin inherits from abstract class User.
+class Admin extends User {
+    public Admin(String username) {
+        super(username);
+    }
+}
+
+// Class Order with private customer and products creates an order for the customer with a list of the products.
+class Order {
+    private Customer customer;
+    private List<Product> products;
+    public Order(Customer customer, List<Product> products) {
+        this.customer = customer;
+        this.products = products;
+    }
+
+    // Adds up the prices of all the products.
+    public double Subtotal() {
+        return products.stream().mapToDouble(Product::getPrice).sum();
+    }
+
+    // Calculates the total price with the 5% tax.
+    public double Total() {
+        double subtotal = Subtotal();
+        double tax = subtotal * 0.05;
+        return subtotal + tax;
+    }
+
+    @Override
+
+    // Display the order for the customer and their products with details.
+    public String toString() {
+        return "Order for " + customer.getUsername() +
+                "\n Products: " + products +
+                "\n Subtotal: " + Subtotal() +
+                "\n Total: " + Total();
+    }
+}
+
+// Public class ECommercePlatform for the program to run.
+public class ECommercePlatform {
+    public static void main(String[] args) {
+        List<Product> products;
+        products = new ArrayList<>();
+
+        // Creates specific products that each belong to a specific category with specific prices.
+        products.add(new Electronics("Laptop", 799.99));
+        products.add(new Clothing("Jacket", 59.99));
+        products.add(new Grocery("Eggs", 8.99));
+
+        // The customer's first name is First and last name is Last. Full name is First Last.
+        Customer customer = new Customer("First Last");
+        System.out.println(" ");
+        System.out.println("Order for " + customer.getUsername());
+
+        // Sorts the products by price from the lowest to the highest.
+        products.stream()
+                .sorted(Comparator.comparing(Product::getPrice))
+                .forEach(System.out::println);
+
+        List<Product> product = new ArrayList<>(products);
+
+        // Tax function. Tax = 5%
+        java.util.function.Function<Double, Double> tax = amount -> amount * 0.05;
+
+        // Subtotal calculation to add up all prices together.
+        double subtotal = products.stream().mapToDouble(Product::getPrice).sum();
+
+        // Discount calculation. Discount = 10%
+        double discount = subtotal * 0.10;
+        System.out.println(" ");
+        System.out.println("Subtotal: $" + subtotal);
+        System.out.println("Discount: $" + discount);
+    }
+}
